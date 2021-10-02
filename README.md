@@ -1,0 +1,2 @@
+# Summary:
+The project contains 3 different java files that work together to create a working phone directory for the user. The DirectoryEntry class represents each item stored in a phone directory that is an object of the PhoneDirectory class. The proj3 class is the executable file that prints out an interactive menu in the terminal for the user to edit, display, or load/save the contents of the phone directory. 

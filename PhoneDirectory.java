@@ -17,7 +17,7 @@ public class PhoneDirectory
 
     public PhoneDirectory()
     {
-
+        // constructor with no variables to initialize
     }
 
     public String addOrChangeEntry(String name, String number)
@@ -25,13 +25,16 @@ public class PhoneDirectory
         String oldNumber = null;
         for(DirectoryEntry person : theDirectory)
         {
+            // check if an entry already exists for the given name
             if(person.getName().equalsIgnoreCase(name))
             {
+                // updates the entry's number
                 oldNumber = person.getNumber();
                 person.setNumber(number);
                 return oldNumber;
             }
         }
+        // an entry does not exist for the given name, so create a new one
         theDirectory.add(new DirectoryEntry(name, number));
         return oldNumber;
     }
@@ -40,6 +43,7 @@ public class PhoneDirectory
     {
         for(DirectoryEntry person : theDirectory)
         {
+            // if an entry with the given name exists, return it
             if(person.getName().equalsIgnoreCase(name))
                 return person;
         }
@@ -50,6 +54,7 @@ public class PhoneDirectory
     {
         if(searchEntry(name) != null)
         {
+            // if an entry with the given name exists, remove it
             return theDirectory.remove(theDirectory.indexOf(searchEntry(name)));
         }
         return null;
@@ -57,6 +62,7 @@ public class PhoneDirectory
 
     public void displayAllEntries()
     {
+        // loops through each entry in the directory printing out the information
         for(DirectoryEntry person : theDirectory)
         {
             System.out.println(person.toString());

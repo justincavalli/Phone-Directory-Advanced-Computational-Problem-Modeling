@@ -17,8 +17,10 @@ public class proj3
     public static void main(String[] args)
     {
         PhoneDirectory directory = new PhoneDirectory();
+        // loop until the user specifies to quit the program
         while(true)
         {
+            // printing a menu for the user to select from
             Scanner kb = new Scanner(System.in);
             System.out.println("\nMenu");
             System.out.println("1. Load a previously saved phone directory from file");
@@ -34,6 +36,7 @@ public class proj3
                 System.out.println("Enter the name of the file to be loaded.");
                 String fileName = kb.nextLine();
                 BufferedReader input = null;
+                // handling errors in user input
                 try
                 {
                     input = new BufferedReader(new FileReader(fileName));
@@ -45,6 +48,7 @@ public class proj3
                         directory.addOrChangeEntry(splitter.nextToken(), splitter.nextToken());
                     }
                 }
+                // printing out error messages
                 catch(FileNotFoundException e)
                 {
                     System.out.println("The file " + fileName + " does not exist.");
@@ -66,6 +70,7 @@ public class proj3
                     }
                 }
             }
+            // Adding or changing an entry
             else if(in.equals("2"))
             {
                 System.out.println("Enter the full name for the directory entry.");
@@ -74,6 +79,7 @@ public class proj3
                 String number = kb.nextLine();
                 directory.addOrChangeEntry(name, number);
             }
+            // Removing an entry
             else if(in.equals("3"))
             {
                 System.out.println("Enter the full name to be removed from the directory.");
@@ -82,22 +88,29 @@ public class proj3
                 if(removed == null)
                     System.out.println("There is no entry by the name " + name);
             }
+            // Search for a specific entry
             else if(in.equals("4"))
             {
                 System.out.println("Enter the full name to be searched for.");
                 String name = kb.nextLine();
                 DirectoryEntry searched = directory.searchEntry(name);
                 if(searched == null)
+                {
+                    // no entry matched the specified name
                     System.out.println("There is no entry by the name " + name);
+                }
                 else
                     System.out.println(searched.toString());
             }
+            // display all of the entries
             else if(in.equals("5"))
             {
                 directory.displayAllEntries();
             }
+            // save the current version of the phone directory to a file
             else if(in.equals("6"))
             {
+                // awaiting the user to input a specific filename
                 System.out.println("Enter the name of the file to save the phone directory in.");
                 String fileName = kb.nextLine();
                 PrintWriter output = null;
@@ -111,6 +124,7 @@ public class proj3
                         output.println(temp);
                     }
                 }
+                // handling an error with the specified file
                 catch(IOException e)
                 {
                     System.out.println(e.getMessage());

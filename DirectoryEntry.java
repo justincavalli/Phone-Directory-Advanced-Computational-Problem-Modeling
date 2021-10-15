@@ -16,6 +16,7 @@ public class DirectoryEntry
 
     public DirectoryEntry(String name, String number)
     {
+        // Constructor - each entry has a name and number
         this.name = name;
         this.number = number;
     }
@@ -32,16 +33,19 @@ public class DirectoryEntry
 
     public void setName(String name)
     {
+        // updating the name
         this.name = name;
     }
 
     public void setNumber(String number)
     {
+        // updating the number
         this.number = number;
     }
 
     public String toString()
     {
+        // prints the name and number of the entry
         return "name: " + name + " number: " + number;
     }
 
@@ -52,6 +56,7 @@ public class DirectoryEntry
 
     public boolean equals(Object obj)
     {
+        // entries are equal if the names match, ignoring case
         if(((DirectoryEntry)obj).getName().equalsIgnoreCase(this.name))
             return true;
         return false;
